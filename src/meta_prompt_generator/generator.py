@@ -22,14 +22,20 @@ class PromptGenerationError(Exception):
     pass
 
 
-def generate_prompt(task_or_prompt: str, api_key: Optional[str] = None) -> str:
+def generate_prompt(
+    task_or_prompt: str,
+    api_key: Optional[str] = None,
+    prompt_template: Optional[str] = META_PROMPT,
+    model_name: Optional[str] = "gpt-4o-mini",
+) -> str:
     """
     Generate a detailed system prompt based on a task description or existing prompt.
 
     Args:
         task_or_prompt (str): The task description or existing prompt.
         api_key (Optional[str]): OpenAI API key. If not provided, it will use the default from environment variables.
-
+        prompt_template (Optional[str]): by default, this template comes from openai's Prompt generation documentation.
+        model_name (Optional[str]): by default it isgpt-4o-mini, replace your preferred openai model
     Returns:
         str: The generated prompt wrapped in markdown code blocks.
 
@@ -46,11 +52,11 @@ def generate_prompt(task_or_prompt: str, api_key: Optional[str] = None) -> str:
         )
 
         completion = client.chat.completions.create(
-            model="gpt-4o-mini",  # Assuming gpt-4 is available, adjust as necessary
+            model=model_name,
             messages=[
                 {
                     "role": "system",
-                    "content": META_PROMPT,
+                    "content": prompt_template,
                 },
                 {
                     "role": "user",

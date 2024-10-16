@@ -113,7 +113,7 @@ meta-prompt "Create a prompt for generating creative short stories"
 
 You can choose to use a different model.
 ```bash
-meta-prompt "Design a system to classify customer feedback" gpt-4o
+meta-prompt "Design a system to classify customer feedback" --model-name gpt-4o
 ```
 
 ### API Key

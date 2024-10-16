@@ -4,9 +4,8 @@ Meta Prompt Generator is a Python package that generates detailed system prompts
 
 ## Features
 
-- Generate detailed system prompts from task descriptions
+- Generate detailed system prompts from task descriptions in just one line
 - Flexible API key management (via argument or environment variable)
-- Option to output prompts with or without markdown formatting
 - Robust error handling and logging
 
 ## Installation
@@ -40,7 +39,7 @@ print(prompt)
 
 The generated prompt is wrapped in markdown code blocks.
 
-To customize your own template, it is recommended to check the current template.
+Before customizing your own template, it is recommended to check the current template.
 
 ```python
 from  meta_prompt_generator.prompts import META_PROMPT

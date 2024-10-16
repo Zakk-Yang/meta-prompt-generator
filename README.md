@@ -102,6 +102,83 @@ prompt = generate_prompt(task, prompt_template = my_meta_prompt)
 print(prompt)
 ```
 
+Output in json format:
+You chan check the schema template first:
+```python
+from  meta_prompt_generator.prompts import META_SCHEMA_PROMPT, META_SCHEMA
+print(META_SCHEMA_PROMPT)
+print(META_SCHEMA)
+```
+Create json output:
+```python
+from meta_prompt_generator.generator import generate_meta_schema
+print(generate_meta_schema('generate KPIs for a data team'))
+```
+Output:
+```json
+{
+  "name": "kpis_data_team",
+  "type": "object",
+  "properties": {
+    "kpi_list": {
+      "type": "array",
+      "description": "A list of KPIs defined for the data team.",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "The name of the KPI."
+          },
+          "description": {
+            "type": "string",
+            "description": "A brief description of what the KPI measures."
+          },
+          "target": {
+            "type": "string",
+            "description": "The target value or goal for the KPI."
+          },
+          "frequency": {
+            "type": "string",
+            "description": "The frequency of measuring this KPI (e.g., weekly, monthly)."
+          },
+          "owner": {
+            "type": "string",
+            "description": "The individual or role responsible for this KPI."
+          }
+        },
+        "required": [
+          "name",
+          "description",
+          "target",
+          "frequency",
+          "owner"
+        ],
+        "additionalProperties": false
+      }
+    }
+  },
+  "required": [
+    "kpi_list"
+  ],
+  "additionalProperties": false
+}
+```
+Feel free to change both `META_SCHEMA_PROMPT` and `META_SCHEMA` or other parameters by the example below:
+    task_or_prompt: str,
+    api_key: Optional[str] = None,
+    schema_template: dict = META_SCHEMA,
+    prompt_template: Optional[str] = META_SCHEMA_PROMPT,
+    model_name: Optional[str] = "gpt-4o-mini",
+```python
+from meta_prompt_generator.generator import generate_meta_schema
+print(generate_meta_schema(task_or_prompt = 'generate KPIs for a data team',
+                           schema_template = 'your schema template',
+                           prompt_template = 'your prompt template',
+                           model_name = 'your preferred openai model name' # default is gpt-4o-mini
+                            ))
+```
+
 Use in cli:
 
 By default, it is using the `gpt-4o-mini` model.

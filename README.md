@@ -4,13 +4,13 @@ Meta Prompt Generator is a Python package that generates detailed system prompts
 
 ## Features
 
-- Generate detailed system prompts from task descriptions in just one line
+- Generate detailed system prompts from task descriptions in just one line of code
 - Flexible API key management (via argument or environment variable)
 - Robust error handling and logging
 
 ## Installation
 
-To install the Meta Prompt Generator, follow these steps:
+To install the Meta Prompt Generator, you can either clone or use pip:
 
 1. Clone the repository:
    ```
@@ -18,9 +18,9 @@ To install the Meta Prompt Generator, follow these steps:
    cd meta-prompt-generator
    ```
 
-2. Install the package in editable mode with development dependencies:
+2. Install the package through pip:
    ```
-   pip install meta-prompt-generator
+   pip install meta-prompt-generator --upgrade
    ```
 
 ## Usage
@@ -102,7 +102,6 @@ prompt = generate_prompt(task, prompt_template = my_meta_prompt)
 print(prompt)
 ```
 
-
 Use in cli:
 
 By default, it is using the `gpt-4o-mini` model.
@@ -114,10 +113,11 @@ You can choose to use a different model.
 ```bash
 meta-prompt "Design a system to classify customer feedback" --model-name gpt-4o
 ```
+It is not recommended to add your customized prompt template here as it can be very lengthy. 
 
 ### API Key
 
-The package requires an OpenAI API key. You can provide it in two ways:
+The package requires an OpenAI API key. You can provide it in three ways:
 
 1. As an argument to the `generate_prompt` function:
    ```python

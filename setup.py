@@ -16,7 +16,7 @@ requirements = read_requirements()
 
 setup(
     name="meta-prompt-generator",
-    version="0.1.3",
+    version="0.1.4",
     author="Zakk Yang",
     author_email="zakkyang@hotmail.com",
     description="A package to generate step-by-step reasoning prompts for language models",
